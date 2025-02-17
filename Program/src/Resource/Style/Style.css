@@ -1,0 +1,165 @@
+/*Registrasiya duwmanin css-i*/
+Agza_bolun{
+-fx-background-radius:30px;
+-fx-background-color:#87d5ff;
+}
+/*Registration Screen*/
+.Registrasiya_penjiresiMain.Util.Global#pane{
+-fx-background-color:#49bc97;
+}
+
+.Registration_labels{
+-fx-text-fill:#00FF00 ,bold;
+-fx-font-size: 20px;
+-fx-font-family:"Times New Roman";
+}
+
+.Combobox{
+-fx-text-fill:#2F4F4F;
+-fx-font-size: 10px;
+-fx-background-color:transparent;
+-fx-border-width:2pt;
+-fx-border-color:yellow;
+-fx-border-radius:50px;
+-fx-font-family:"News706 BT";
+}
+
+.Registration_Texts{
+-fx-text-fill:#2F4F4F;
+-fx-font-size: 10px;
+-fx-background-color:transparent;
+-fx-border-width:2pt;
+-fx-border-color:yellow;
+-fx-border-radius:50px;
+}
+.Regbtn{
+-fx-text-fill:blue;
+-fx-background-color:transparent;
+-fx-border-width:2px;
+-fx-border-color:yellow;
+-fx-border-radius:50pt;
+}
+/*Password screenin css-i*/
+.Password{
+-fx-text-fill:white;
+-fx-font-family: "Vineta BT";
+-fx-font-size: 15px;
+-fx-border-width: 6px;
+-fx-border-radius:50px;
+-fx-background-color:transparent;
+
+}
+.In_password{
+-fx-font-family:"Freehand521 BT";
+-fx-font-size:15px;
+-fx-text-fill:white;
+-fx-border-width: 6px;
+-fx-border-radius:50px;
+-fx-background-color:transparent;
+
+}
+.In_password:hover{
+-fx-text-fill:#ffff00;
+-fx-font-family: "Vineta BT";
+-fx-font-size: 15px;
+-fx-background-color: blue;
+-fx-border-width:2px;
+-fx-border-radius:50px;
+             }
+/*Futter tekstin css - i*/
+.Futtortext{
+-fx-font-size:25pt;
+-fx-text-fill:red;
+-fx-font-family:"CommercialScript BT";
+}
+.Futtorback{
+-fx-background-color:rgb(82, 27, 122);
+}
+.Bottom_back{
+-fx-background-color:black;
+}
+/*Main klasyn cssleri*/
+.Mainbox{
+-fx-background-color:white;
+}
+/* Cepde duryan duwmelerin cssleri*/
+.Cep_list_arka_fon{
+-fx-background-color:white;
+}
+.btns{
+-fx-border-color:green;
+-fx-border-bottom-width: thin;
+-fx-background-color: transparent;
+-fx-font-family: "Vineta BT";
+-fx-font-size:15px;
+-fx-border-radius:50px;
+-fx-text-fill: black,bold;
+}
+/*Gozleg duwmelerin css -i*/
+.Search{
+-fx-background-color:#95f06d;
+-fx-font-size:20px;
+-fx-font-family:"News706 BT";
+}
+.Gozleg{
+-fx-font-family:"News706 BT";
+-fx-background-color:#95f06d;
+-fx-border-width : 2pt ;
+}
+/*Önümleri girizýän klasyň css - i*/
+.product{
+-fx-background-color:white;
+}
+/*Aýlyklar klasyň css-i*/
+.Aylyklar{
+-fx-background-color:DodgerBlue;
+}
+
+/* Isgarler bolumi*/
+.label_worker{
+-fx-font-family: "News706 BT";
+-fx-border-width: 6px;
+-fx-border-color: #00BFFF;
+-fx-font-size: 15px;
+}
+.label_for_list{
+-fx-font-family:"News706 BT";
+-fx-border-width:4px;
+-fx-border-color:#59c62e;
+-fx-font-size: 15px;
+}
+/*Exit klas ucin css*/
+.Exit{
+-fx-font-size:15px;
+-fx-font-family:"Times New Romans";
+}
+.Aylar{
+-fx-background-color:transparent;
+-fx-text-fill:blue;
+}
+
+.exit-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.exit-button {
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-border-color: #C0392B;
+}
+
+.exit-button:hover {
+    -fx-background-color: #C0392B;
+    -fx-border-color: #A93226;
+}
+
+
+

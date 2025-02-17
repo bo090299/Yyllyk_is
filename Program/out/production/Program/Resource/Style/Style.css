@@ -1,0 +1,93 @@
+/*Registrasiya duwmanin css-i*/
+Agza_bolun{
+-fx-background-radius:30;
+-fx-background-color:#87d5ff;
+}
+/*Registration Screen*/
+.Registrasiya_penjiresiMain.Util.Global#pane{
+-fx-background-color:#49bc97;
+}
+.Regbtn{
+-fx-text-fill:blue;
+}
+/*Password screenin css-i*/
+.Password{
+-fx-text-fill:#ffff00;
+-fx-font-family: "Vineta BT";
+-fx-font-size: 15px;
+-fx-background-color: transparent;
+}
+.In_password{
+-fx-font-family:"Freehand521 BT";
+-fx-font-size:15px;
+-fx-text-fill:white;
+-fx-background-color:transparent;
+-fx-border-width:2px;
+-fx-border-radius:50;
+}
+/*Futter tekstin css - i*/
+.Futtortext{
+-fx-font-size:25pt;
+-fx-text-fill:red;
+-fx-font-family:"CommercialScript BT";
+}
+.Futtorback{
+-fx-background-color:rgb(82, 27, 122);
+}
+.Bottom_back{
+-fx-background-color:black;
+}
+/*Main klasyn cssleri*/
+.Mainbox{
+-fx-background-color:white;
+}
+/* Cepde duryan duwmelerin cssleri*/
+.Cep_list_arka_fon{
+-fx-background-color:white;
+
+}
+.btns{
+-fx-border-color:green;
+-fx-border-bottom-width: thin;
+-fx-background-color: transparent;
+-fx-font-family: "Vineta BT";
+-fx-font-size:15px;
+-fx-text-fill: black,bold;
+}
+/*Gozleg duwmelerin css -i*/
+.Search{
+-fx-background-color:#95f06d;
+-fx-font-size:20px;
+-fx-font-family:"News706 BT";
+}
+.Gozleg{
+-fx-font-family:"News706 BT";
+-fx-background-color:#95f06d;
+}
+/*Önümleri girizýän klasyň css - i*/
+.product{
+-fx-background-color:white;
+}
+/*Aýlyklar klasyň css-i*/
+.Aylyklar{
+-fx-background-color:DodgerBlue;
+}
+
+/* Isgarler bolumi*/
+.label_worker{
+-fx-font-family: "News706 BT";
+-fx-border-width: 6px;
+-fx-border-color: #00BFFF;
+-fx-font-size: 15px;
+}
+.label_for_list{
+-fx-font-family:"News706 BT";
+-fx-border-width:4px;
+-fx-border-color:#59c62e;
+-fx-font-size: 15px;
+}
+/*Exit klas ucin css*/
+.Exit{
+-fx-font-size:15px;
+-fx-font-family:"Times New Romans";
+}
