@@ -48,10 +48,7 @@ public class Onumleri_girizmek extends VBox {
         String selbuyruk = "SELECT * FROM `kategoriya`";
         Statement sl = conn.getConnection().createStatement();
         ResultSet res = sl.executeQuery(selbuyruk);
-        while (res.next()){
-            catid_text.getItems().addAll(res.getInt("id"));
-        }
-        int category_id = Integer.valueOf(String.valueOf(catid_text.getSelectionModel()));
+
 
         VBox catid_box = new VBox();
         catid_box.getChildren().addAll(cat_id,catid_text);
@@ -113,7 +110,7 @@ public class Onumleri_girizmek extends VBox {
 
         girizmek.setOnAction((e)->{
 
-            if (Number_Allert.DoubleAllert(bahasy_text.getText())== false||Number_Allert.IntegerAllert(id.getText())==false){
+            if (Number_Allert.DoubleAllert(bahasy_text.getText())== false||Number_Allert.IntegerAllert(idtext.getText())==false){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ýalňyşlyk");
                 alert.setContentText("Siziň bahasy ýa - da idisi maglumatlaryňyz san bolmaly!");
