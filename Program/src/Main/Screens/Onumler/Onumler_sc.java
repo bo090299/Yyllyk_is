@@ -33,10 +33,7 @@ public class Onumler_sc extends StackPane {
         while (rt.next()){
 
 
-                Label id = new Label(rt.getString("tb"));
-                id.setPrefSize(SizeConfig.Width(0.04),SizeConfig.Height(0.04));
-                id.setAlignment(Pos.CENTER);
-                id.getStyleClass().add("label_for_list");
+
 
 
                 Label name = new Label(rt.getString("id"));
@@ -70,7 +67,7 @@ public class Onumler_sc extends StackPane {
 
 
                 HBox hBox = new HBox();
-                hBox.getChildren().addAll(id,name,surname,wezipe,month,monthsalary);
+                hBox.getChildren().addAll(name,surname,wezipe,month,monthsalary);
 
                 dikine.getChildren().addAll(hBox);
 

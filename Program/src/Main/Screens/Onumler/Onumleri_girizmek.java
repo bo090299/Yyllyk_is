@@ -1,9 +1,7 @@
 package Main.Screens.Onumler;
 
-import Main.Util.Connector;
-import Main.Util.Global;
-import Main.Util.Number_Allert;
-import Main.Util.SizeConfig;
+import Main.Util.*;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.Priority;
@@ -13,96 +11,20 @@ import java.sql.*;
 
 public class Onumleri_girizmek extends VBox {
     public Onumleri_girizmek() throws SQLException {
-
+        Box_class box_class = new Box_class();
         Connector conn = new Connector();
 
-        Label id = new Label("Id");
-        id.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        id.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        id.getStyleClass().add("Registration_labels");
-
-
-        TextField idtext = new TextField();
-        idtext.setPromptText("Id");
-        idtext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        idtext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        idtext.getStyleClass().add("Registration_Texts");
-
-        VBox id_box = new VBox();
-        id_box.getChildren().addAll(id,idtext);
-        id_box.setSpacing(15);
-        id_box.setAlignment(Pos.CENTER);
-
-        Label cat_id = new Label("Kategoriya id");
-        cat_id.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        cat_id.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        cat_id.getStyleClass().add("Registration_labels");
-
-
-        ComboBox catid_text = new ComboBox();
-        catid_text.setPromptText("Kategoriýa id");
-        catid_text.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        catid_text.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        catid_text.getStyleClass().add("Registration_Texts");
-
-        String selbuyruk = "SELECT * FROM `kategoriya`";
-        Statement sl = conn.getConnection().createStatement();
-        ResultSet res = sl.executeQuery(selbuyruk);
-
-
-        VBox catid_box = new VBox();
-        catid_box.getChildren().addAll(cat_id,catid_text);
-        catid_box.setSpacing(15);
-        catid_box.setAlignment(Pos.CENTER);
-
-        Label name = new Label("Ady");
-        name.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        name.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        name.getStyleClass().add("Registration_labels");
-
+        TextField cat_id = new TextField();
+        VBox cat_id_box = box_class.Vbox_method("Kategoriýa id",cat_id,"Kategoriýa id");
 
         TextField name_text = new TextField();
-        name_text.setPromptText("Ady");
-        name_text.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        name_text.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-
-        VBox name_box = new VBox();
-        name_box.getChildren().addAll(name,name_text);
-        name_box.setSpacing(15);
-        name_box.setAlignment(Pos.CENTER);
-
-        Label bahasy = new Label("Bahasy");
-        bahasy.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        bahasy.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        bahasy.getStyleClass().add("Registration_labels");
-
+        VBox name_box = box_class.Vbox_method("Ady",name_text,"Ady");
 
         TextField bahasy_text = new TextField();
-        bahasy_text.setPromptText("Bahasy");
-        bahasy_text.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        bahasy_text.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        bahasy_text.getStyleClass().add("Registration_Texts");
-
-        VBox baha_box = new VBox();
-        baha_box.getChildren().addAll(bahasy,bahasy_text);
-        baha_box.setSpacing(15);
-        baha_box.setAlignment(Pos.CENTER);
-
-        Label info = new Label("Umumy maglumat");
-        info.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        info.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        info.getStyleClass().add("Registration_labels");
+        VBox baha_box = box_class.Vbox_method("Bahasy",bahasy_text,"Bahasy");
 
         TextField info_text = new TextField();
-        info_text.setPromptText("Umumy maglumat");
-        info_text.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        info_text.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        info_text.getStyleClass().add("Registration_Texts");
-
-        VBox info_box = new VBox();
-        info_box.getChildren().addAll(info,info_text);
-        info_box.setSpacing(15);
-        info_box.setAlignment(Pos.CENTER);
+        VBox info_box = box_class.Vbox_method("Umumy maglumat",info_text,"Umumy maglumat");
 
         Button girizmek = new Button("Girizmek");
         girizmek.setPrefSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
@@ -110,45 +32,59 @@ public class Onumleri_girizmek extends VBox {
 
         girizmek.setOnAction((e)->{
 
-            if (Number_Allert.DoubleAllert(bahasy_text.getText())== false||Number_Allert.IntegerAllert(idtext.getText())==false){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            if (name_text.getText().isEmpty()||bahasy_text.getText().isEmpty()||info_text.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Ýalňyşlyk");
+                alert.setContentText("Boş öýjükleri dolduryň!");
+                alert.show();
+            }
+            else if (Number_Allert.DoubleAllert(bahasy_text.getText())== false){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ýalňyşlyk");
                 alert.setContentText("Siziň bahasy ýa - da idisi maglumatlaryňyz san bolmaly!");
                 alert.show();
-            }
+            }else {
+                String chek_cat_id = "SELECT id FROM kategoriya WHERE id = ?";
+                try (PreparedStatement prs = conn.getConnection().prepareStatement(chek_cat_id)){
+                    prs.setInt(1,Integer.parseInt(cat_id.getText()));
+                    try (ResultSet res = prs.executeQuery()){
+                        if (!res.next()){
+                            throw new SQLException("Bu kategoriyaly"+cat_id.getText()+"onum yok");
+                        }
 
-            if (Number_Allert.DoubleAllert(bahasy_text.getText())== true||Number_Allert.IntegerAllert(id.getText())==true) {
+                    }
 
-                String buyruk = "INSERT INTO `onumler`(`id`, `ctegory_id`, `name`, `bahasy`, `info`) VALUES ('"+Integer.valueOf(idtext.getText())+"'," +
-                        "'"+catid_text.getSelectionModel().getSelectedItem()+"','"+name_text.getText()+"','"+Double.valueOf(bahasy_text.getText())+"','"+info_text.getText()+"')";
-                Statement st;
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                String quary = "INSERT INTO `onumler`(`category_id`, `name`, `bahasy`, `info`) VALUES (?,?,?,?)";
                 try {
-                    st = conn.getConnection().createStatement();
-                    st.executeUpdate(buyruk);
-                    String select1 = "SELECT * FROM `onumler`";
-                    Statement stat1 = conn.getConnection().createStatement();
-                    ResultSet rt1 = stat1.executeQuery(select1);
-                    while (rt1.next()){
-                        int i2 = 0;
-                        i2++;
-                        String udate = "UPDATE `onumler` SET `tb`='"+i2+"'WHERE tb = '"+rt1.getInt("tb")+"';";
-                        Statement st1;
-                        st1 = conn.getConnection().createStatement();
-                        st1.executeUpdate(udate);
+                    System.out.println("girdi");
+                    PreparedStatement ps = conn.getConnection().prepareStatement(quary);
+                    ps.setInt(1,Integer.parseInt(cat_id.getText()));
+                    ps.setString(2,name_text.getText());
+                    ps.setDouble(3,Double.parseDouble(bahasy_text.getText()));
+                    ps.setString(4,info_text.getText());
+
+                    int rowsAffectec = ps.executeUpdate();
+                    if (rowsAffectec > 0){
+                        System.out.println("Maglumat girizildi");
+                    }else {
+                        System.out.println("Maglumaty grizilmedi");
                     }
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
 
+
             }
-
-            System.out.println("Onum girizildi");
-
         });
 
         Button yza = new Button("çykmak");
         yza.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
         yza.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
+        yza.getStyleClass().addAll("Regbtn");
         yza.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             try {
@@ -162,12 +98,13 @@ public class Onumleri_girizmek extends VBox {
 
         VBox productbox = new VBox();
         productbox.setSpacing(10);
-        productbox.getChildren().addAll(id_box,catid_box,name_box,baha_box,info_box,girizmek,yza);
+        productbox.getChildren().addAll(cat_id_box,name_box,baha_box,info_box,girizmek,yza);
         productbox.setAlignment(Pos.CENTER);
 
 
 
         this.getChildren().addAll(productbox);
+        this.setMargin(productbox, new Insets(0,0,0,350));
         this.setPrefSize(SizeConfig.Width(0.8),SizeConfig.Height(0.76));
         this.setAlignment(Pos.CENTER);
         this.setVgrow(productbox,Priority.ALWAYS);
