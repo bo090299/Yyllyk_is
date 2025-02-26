@@ -1,9 +1,8 @@
 package Main.Screens.Onumler;
 
 import Main.Screens.Admin_Screen.Left_list;
-import Main.Util.Connector;
-import Main.Util.Global;
-import Main.Util.SizeConfig;
+import Main.Util.*;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -17,145 +16,83 @@ import java.sql.*;
 public class Onum_List extends StackPane{
     public Onum_List() throws SQLException {
         Connector conn = new Connector();
-        Label idn = new Label("Id");
-        idn.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        idn.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        idn.getStyleClass().add("Registration_labels");
+        Box_class box_class = new Box_class();
+
 
         TextField idtext = new TextField();
-        idtext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        idtext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        idtext.getStyleClass().add("Registration_Texts");
+        VBox idbox = box_class.Vbox_method("Id",idtext,"Id");
 
-
-        VBox idbox = new VBox();
-        idbox.getChildren().addAll(idn,idtext);
-        idbox.setSpacing(10);
-        idbox.setAlignment(Pos.CENTER);
-
-
-        Label onumname = new Label("Ady");
-        onumname.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onumname.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onumname.getStyleClass().add("Registration_labels");
+        TextField cat_id = new TextField();
+        VBox cat_id_box = box_class.Vbox_method("Ketegoriýa id",cat_id,"Ketegoriýa id");
 
         TextField nametext = new TextField();
-        nametext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        nametext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        nametext.getStyleClass().add("Registration_Texts");
+        VBox namebox = box_class.Vbox_method("Ady",nametext,"Ady");
 
-
-        VBox namebox = new VBox();
-        namebox.getChildren().addAll(onumname,nametext);
-        namebox.setSpacing(10);
-        namebox.setAlignment(Pos.CENTER);
-
-        Label onumbahasy = new Label("Bahasy");
-        onumbahasy.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onumbahasy.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onumbahasy.getStyleClass().add("Registration_labels");
 
         TextField bahasytext = new TextField();
-        bahasytext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        bahasytext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        bahasytext.getStyleClass().add("Registration_Texts");
+        VBox bahasybox = box_class.Vbox_method("Bahasy",bahasytext,"Bahasy");
 
-
-        VBox bahasybox = new VBox();
-        bahasybox.getChildren().addAll(onumbahasy,bahasytext);
-        bahasybox.setSpacing(10);
-        bahasybox.setAlignment(Pos.CENTER);
-
-        Label cykarylan_sene = new Label("Çykarylan sene");
-        cykarylan_sene.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        cykarylan_sene.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        cykarylan_sene.getStyleClass().add("Registration_labels");
-
-        DatePicker senetext = new DatePicker();
-        senetext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        senetext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        senetext.getStyleClass().add("Registration_Texts");
-
-
-        VBox senebox = new VBox();
-        senebox.getChildren().addAll(cykarylan_sene,senetext);
-        senebox.setSpacing(10);
-        senebox.setAlignment(Pos.CENTER);
-
-        Label onummohleti = new Label("Mohleti");
-        onummohleti.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onummohleti.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        onummohleti.getStyleClass().add("Registration_labels");
-
-        TextField mohletitext = new TextField();
-        mohletitext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mohletitext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mohletitext.getStyleClass().add("Registration_Texts");
-
-
-        VBox mohletibox = new VBox();
-        mohletibox.getChildren().addAll(onummohleti,mohletitext);
-        mohletibox.setSpacing(10);
-        mohletibox.setAlignment(Pos.CENTER);
-
-        Label mukdary = new Label("Mukdary");
-        mukdary.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mukdary.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mukdary.getStyleClass().add("Registration_labels");
-
-        TextField mukdarytext = new TextField();
-        mukdarytext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mukdarytext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        mukdarytext.getStyleClass().add("Registration_Texts");
-
-
-        VBox muktarybox = new VBox();
-        muktarybox.getChildren().addAll(mukdary,mukdarytext);
-        muktarybox.setSpacing(10);
-        muktarybox.setAlignment(Pos.CENTER);
-
-        Label satylany = new Label("Satylany");
-        satylany.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        satylany.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        satylany.getStyleClass().add("Registration_labels");
-
-        TextField satylanytext = new TextField();
-        satylanytext.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        satylanytext.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
-        satylanytext.getStyleClass().add("Registration_Texts");
-
-
-        VBox satylanbox = new VBox();
-        satylanbox.getChildren().addAll(satylany,satylanytext);
-        satylanbox.setSpacing(10);
-        satylanbox.setAlignment(Pos.CENTER);
-
+       TextField info = new TextField();
+        VBox senebox = box_class.Vbox_method("Umumy maglumat",info,"Umumy maglumat");
 
 
         Button update = new Button("Üýtgetmek");
         update.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
         update.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
         update.getStyleClass().addAll("Regbtn");
-
         update.setOnAction((e)->{
-            double a = Double.parseDouble(bahasytext.getText())* Double.parseDouble(satylanytext.getText());
-
-            String buyruk1 = "UPDATE `onumler` SET`ady`='"+nametext.getText()+"',`bahasy`='"+bahasytext.getText()+"',`cykarylansenesi`='"+senetext.getValue()+"',`mohleti`='"+mohletitext.getText()+"',`umumymukdary`="+mukdarytext.getText()+",`satylanmukdary`="+satylanytext.getText()+",`girdeyji`="+a+" WHERE id = "+idtext.getText()+"; ";
-            try {
-                Statement stat = conn.getConnection().createStatement();
-                stat.executeUpdate(buyruk1);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
+            if (idtext.getText().isEmpty()||cat_id.getText().isEmpty()||nametext.getText().isEmpty()||bahasytext.getText().isEmpty()||info.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Ýalňyşlyk");
+                alert.setContentText("Boş öýjükleri dolduryň");
+                alert.show();
+            }else if (Number_Allert.DoubleAllert(bahasytext.getText())==false||Number_Allert.IntegerAllert(idtext.getText())==false ||
+            Number_Allert.IntegerAllert(cat_id.getText())==false){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Ýalňyşlyk");
+                alert.setContentText("Id , kategoriýa id we bahasy öýjükler san bolmaly");
+                alert.show();
+            }else {
+                String upquery = "UPDATE `onumler` SET `id`=?,`category_id`=?,`name`=?,`bahasy`=?,`info`=? WHERE `id` = ?";
+                try {
+                    PreparedStatement ps = conn.getConnection().prepareStatement(upquery);
+                    ps.setInt(1, Integer.valueOf(idtext.getText()));
+                    ps.setInt(2, Integer.valueOf(cat_id.getText()));
+                    ps.setString(3, nametext.getText());
+                    ps.setDouble(4, Double.valueOf(bahasytext.getText()));
+                    ps.setString(5, info.getText());
+                    ps.setInt(6,Integer.valueOf(idtext.getText()));
+                    ps.executeUpdate();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                idtext.clear();
+                cat_id.clear();
+                nametext.clear();
+                bahasytext.clear();
+                info.clear();
+                Global.main_hbox.getChildren().clear();
+                try {
+                    Global.main_hbox.getChildren().addAll(new Onum_List());
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+//            String buyruk1 = "UPDATE `onumler` SET`ady`='"+nametext.getText()+"',`bahasy`='"+bahasytext.getText()+"',`cykarylansenesi`='"+senetext.getValue()+"',`mohleti`='"+mohletitext.getText()+"',`umumymukdary`="+mukdarytext.getText()+",`satylanmukdary`="+satylanytext.getText()+",`girdeyji`="+a+" WHERE id = "+idtext.getText()+"; ";
+//            try {
+//                Statement stat = conn.getConnection().createStatement();
+//                stat.executeUpdate(buyruk1);
+//            } catch (SQLException e1) {
+//                e1.printStackTrace();
+//            }
+//            VBox klas = new VBox();
+//            Global.main_hbox.getChildren().clear();
+//            try {
+//                klas.getChildren().addAll(new Onumler_sc(),new Onum_List());
+//            } catch (SQLException e1) {
+//                e1.printStackTrace();
+//            }
+//            Global.main_hbox.getChildren().setAll(new Left_list(),klas);
             }
-            VBox klas = new VBox();
-            Global.main_hbox.getChildren().clear();
-            try {
-                klas.getChildren().addAll(new Onumler_sc(),new Onum_List());
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-            Global.main_hbox.getChildren().setAll(new Left_list(),klas);
-
         });
 
         Button delete = new Button("Öçürmek");
@@ -192,6 +129,7 @@ public class Onum_List extends StackPane{
         Button giriz = new Button("Önüm girizmek");
         giriz.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
         giriz.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
+        giriz.getStyleClass().add("Regbtn");
         giriz.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             try {
@@ -204,13 +142,27 @@ public class Onum_List extends StackPane{
         Button yza = new Button("çykmak");
         yza.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
         yza.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
+        yza.getStyleClass().add("Regbtn");
         yza.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             Global.main_hbox.getChildren().addAll(new Umumy_onumler_class());
         }));
 
+        VBox bir_btns = new VBox(15);
+        bir_btns.getChildren().addAll(giriz,yza);
+        bir_btns.setAlignment(Pos.CENTER);
+
+        VBox iki_btns = new VBox(15);
+        iki_btns.getChildren().addAll(update,delete);
+        iki_btns.setAlignment(Pos.CENTER);
+
+        HBox btns = new HBox(15);
+        btns.getChildren().addAll(bir_btns,iki_btns);
+        btns.setAlignment(Pos.CENTER);
+
         VBox umumy = new VBox();
-        umumy.getChildren().addAll(idbox,namebox,bahasybox,senebox,mohletibox,muktarybox,satylanbox,giriz,update,delete,yza);
+        umumy.getChildren().addAll(idbox,cat_id_box,namebox,bahasybox,senebox,btns);
+        umumy.setMargin(btns,new Insets(50,0,0,0));
         umumy.setAlignment(Pos.CENTER);
         umumy.setPrefSize(SizeConfig.Width(0.2),SizeConfig.Height(0.8));
             ScrollPane scroll = new ScrollPane();

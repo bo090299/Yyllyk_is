@@ -32,10 +32,6 @@ public class Onumler_sc extends StackPane {
 
         while (rt.next()){
 
-
-
-
-
                 Label name = new Label(rt.getString("id"));
 
                 name.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));

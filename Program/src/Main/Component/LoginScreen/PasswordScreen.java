@@ -73,7 +73,7 @@ public class PasswordScreen {
 
         Button ok = new Button("Ok");
         ok.setPrefSize(SizeConfig.Width(0.06), SizeConfig.Height(0.02));
-        ok.getStyleClass().add("Password");
+        ok.getStyleClass().add("ok_button");
         ok.setOnAction((e) -> {
             try {
                 Statement st;
@@ -138,7 +138,6 @@ public class PasswordScreen {
         mainbox.setMargin(pass , new Insets(0,0,0,300));
         mainbox.setMargin(role , new Insets(0,0,0,300));
         Global.box2 = mainbox;
-        mainbox.getStylesheets().addAll(CssConfig.Css());
 
         Global.pane1=pane1;
         StackPane pane = new StackPane();
