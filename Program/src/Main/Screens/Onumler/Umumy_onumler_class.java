@@ -1,6 +1,7 @@
 package Main.Screens.Onumler;
 
 import Main.Component.MainScreen.Main_Screen;
+import Main.Screens.Category.Category_main;
 import Main.Util.Button_class;
 import Main.Util.Global;
 import Main.Util.SizeConfig;
@@ -38,6 +39,10 @@ public class Umumy_onumler_class extends VBox {
         Button ammar = button_class.Btn_class("Ammar");
 
         Button category = button_class.Btn_class("Kategoriýalar");
+        category.setOnAction((e->{
+            Global.main_hbox.getChildren().clear();
+            Global.main_hbox.getChildren().addAll(new Category_main());
+        }));
 
         ikinji.getChildren().addAll(ammar,category);
         ikinji.setAlignment(Pos.CENTER);
