@@ -17,6 +17,7 @@ public class Onum_List extends StackPane{
     public Onum_List() throws SQLException {
         Connector conn = new Connector();
         Box_class box_class = new Box_class();
+        Button_class button_class = new Button_class();
 
 
         TextField idtext = new TextField();
@@ -36,10 +37,7 @@ public class Onum_List extends StackPane{
         VBox senebox = box_class.Vbox_method("Umumy maglumat",info,"Umumy maglumat");
 
 
-        Button update = new Button("Üýtgetmek");
-        update.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        update.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        update.getStyleClass().addAll("Regbtn");
+        Button update = button_class.Sized_btns("Üýtgetmek",0.06,0.04);
         update.setOnAction((e)->{
             if (idtext.getText().isEmpty()||cat_id.getText().isEmpty()||nametext.getText().isEmpty()||bahasytext.getText().isEmpty()||info.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -77,29 +75,10 @@ public class Onum_List extends StackPane{
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-//            String buyruk1 = "UPDATE `onumler` SET`ady`='"+nametext.getText()+"',`bahasy`='"+bahasytext.getText()+"',`cykarylansenesi`='"+senetext.getValue()+"',`mohleti`='"+mohletitext.getText()+"',`umumymukdary`="+mukdarytext.getText()+",`satylanmukdary`="+satylanytext.getText()+",`girdeyji`="+a+" WHERE id = "+idtext.getText()+"; ";
-//            try {
-//                Statement stat = conn.getConnection().createStatement();
-//                stat.executeUpdate(buyruk1);
-//            } catch (SQLException e1) {
-//                e1.printStackTrace();
-//            }
-//            VBox klas = new VBox();
-//            Global.main_hbox.getChildren().clear();
-//            try {
-//                klas.getChildren().addAll(new Onumler_sc(),new Onum_List());
-//            } catch (SQLException e1) {
-//                e1.printStackTrace();
-//            }
-//            Global.main_hbox.getChildren().setAll(new Left_list(),klas);
             }
         });
 
-        Button delete = new Button("Öçürmek");
-        delete.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        delete.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        delete.getStyleClass().addAll("Regbtn");
-
+        Button delete = button_class.Sized_btns("Öçürmek",0.06,0.04);
         delete.setOnAction((e)->{
             String buyruk2 = "DELETE FROM `onumler` WHERE id = "+idtext.getText()+";";
             if (idtext.getText().isEmpty()||nametext.getText().isEmpty()||bahasytext.getText().isEmpty()) {
@@ -115,21 +94,17 @@ public class Onum_List extends StackPane{
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-            VBox klas = new VBox();
             Global.main_hbox.getChildren().clear();
             try {
-                klas.getChildren().addAll(new Onumler_sc(),new Onum_List());
+                Global.main_hbox.getChildren().addAll(new Onum_List());
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-            Global.main_hbox.getChildren().setAll(new Left_list(),klas);
+
         });
 
 
-        Button giriz = new Button("Önüm girizmek");
-        giriz.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        giriz.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        giriz.getStyleClass().add("Regbtn");
+        Button giriz = button_class.Sized_btns("Önüm girizmek",0.06,0.04);
         giriz.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             try {
@@ -139,10 +114,7 @@ public class Onum_List extends StackPane{
             }
         }));
 
-        Button yza = new Button("çykmak");
-        yza.setMaxSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        yza.setMinSize(SizeConfig.Width(0.06),SizeConfig.Height(0.04));
-        yza.getStyleClass().add("Regbtn");
+        Button yza = button_class.Sized_btns("çykmak",0.06,0.04);
         yza.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             Global.main_hbox.getChildren().addAll(new Umumy_onumler_class());
@@ -162,20 +134,27 @@ public class Onum_List extends StackPane{
 
         VBox umumy = new VBox();
         umumy.getChildren().addAll(idbox,cat_id_box,namebox,bahasybox,senebox,btns);
-        umumy.setMargin(btns,new Insets(50,0,0,0));
+        umumy.setMargin(btns,new Insets(50,0,0,200));
+        umumy.setMargin(idbox,new Insets(0,0,0,200));
+        umumy.setMargin(cat_id_box,new Insets(0,0,0,200));
+        umumy.setMargin(namebox,new Insets(0,0,0,200));
+        umumy.setMargin(bahasybox,new Insets(0,0,0,200));
+        umumy.setMargin(senebox,new Insets(0,0,0,200));
         umumy.setAlignment(Pos.CENTER);
         umumy.setPrefSize(SizeConfig.Width(0.2),SizeConfig.Height(0.8));
             ScrollPane scroll = new ScrollPane();
             scroll.setContent(new Onumler_sc());
 
 
-        HBox mainbox1 = new HBox();
+        HBox mainbox1 = new HBox(20);
         mainbox1.getChildren().addAll(umumy,scroll);
         mainbox1.setHgrow(umumy , Priority.ALWAYS);
-        Global.pane.getChildren().add(this);
+        mainbox1.setMargin(scroll, new Insets(0,0,0,SizeConfig.Width(0.1)));
         this.getChildren().add(mainbox1);
+        umumy.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.8));
+        umumy.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.8));
 //        this.setStyle("-fx-background-color:green;");
-        this.setPrefSize(SizeConfig.Width(0.8),SizeConfig.Height(0.76));
+
 
     }
 }

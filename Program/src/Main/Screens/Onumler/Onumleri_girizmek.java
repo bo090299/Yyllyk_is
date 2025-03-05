@@ -31,8 +31,6 @@ public class Onumleri_girizmek extends VBox {
         girizmek.getStyleClass().addAll("Regbtn");
 
         girizmek.setOnAction((e)->{
-
-
             if (name_text.getText().isEmpty()||bahasy_text.getText().isEmpty()||info_text.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ýalňyşlyk");
@@ -76,7 +74,10 @@ public class Onumleri_girizmek extends VBox {
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-
+                cat_id.clear();
+                name_text.clear();
+                bahasy_text.clear();
+                info_text.clear();
 
             }
         });

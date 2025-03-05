@@ -3,6 +3,7 @@ package Main.Screens.Onumler;
 import Main.Models.Hasaplasyklar;
 import Main.Models.Onumler;
 import Main.Util.Connector;
+import Main.Util.Label_class;
 import Main.Util.SizeConfig;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -21,7 +22,7 @@ import java.sql.*;
 
 public class Onumler_sc extends StackPane {
     public Onumler_sc() throws SQLException {
-
+        Label_class label_class = new Label_class();
         Connector connector = new Connector();
         ScrollPane scroll = new ScrollPane();
         String buyruk = "SELECT * FROM `onumler`";
@@ -29,41 +30,23 @@ public class Onumler_sc extends StackPane {
         ResultSet rt = st.executeQuery(buyruk);
 
         VBox dikine = new VBox();
-
+        int t_b = 0;
         while (rt.next()){
+                t_b +=1;
+                Label tb = label_class.label(String.valueOf(t_b),0.08,0.04);
 
-                Label name = new Label(rt.getString("id"));
+                Label id = label_class.label(String.valueOf(rt.getInt("id")),0.08,0.04);
 
-                name.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                name.setAlignment(Pos.CENTER);
-                name.getStyleClass().add("label_for_list");
+                Label cat_id = label_class.label(String.valueOf(rt.getInt("category_id")), 0.08,0.04);
 
-                Label surname = new Label(rt.getString("category_id"));
-                surname.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                surname.setAlignment(Pos.CENTER);
-                surname.getStyleClass().add("label_for_list");
+                Label name = label_class.label(rt.getString("name"),0.1,0.04);
 
+                Label baha = label_class.label(String.valueOf(rt.getDouble("bahasy")),0.1,0.04);
 
-
-                Label wezipe = new Label(rt.getString("name"));
-                wezipe.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                wezipe.setAlignment(Pos.CENTER);
-                wezipe.getStyleClass().add("label_for_list");
-
-
-                Label month = new Label(rt.getString("bahasy"));
-                month.setPrefSize(SizeConfig.Width(0.1),SizeConfig.Height(0.04));
-                month.setAlignment(Pos.CENTER);
-                month.getStyleClass().add("label_for_list");
-
-                Label monthsalary = new Label(rt.getString("info"));
-                monthsalary.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                monthsalary.setAlignment(Pos.CENTER);
-                monthsalary.getStyleClass().add("label_for_list");
-
+                Label infoma = label_class.label(rt.getString("info"),0.2,0.04);
 
                 HBox hBox = new HBox();
-                hBox.getChildren().addAll(name,surname,wezipe,month,monthsalary);
+                hBox.getChildren().addAll(tb,id,cat_id,name,baha,infoma);
 
                 dikine.getChildren().addAll(hBox);
 
@@ -77,38 +60,20 @@ public class Onumler_sc extends StackPane {
         //yokarky bolegi
         HBox main_hbox = new HBox();
 
-        Label number = new Label("№");
-        number.getStyleClass().add("label_worker");
-        number.setPrefSize(SizeConfig.Width(0.04),SizeConfig.Height(0.04));
+        Label number = label_class.label("№",0.08,0.04);
 
 
-        Label ady = new Label("id");
-        ady.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-        ady.setAlignment(Pos.CENTER);
-        ady.getStyleClass().add("label_worker");
+        Label id = label_class.label("Id",0.08,0.04);
 
-        Label familiyasy = new Label("category_id");
-        familiyasy.getStyleClass().add("label_worker");
-        familiyasy.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-        familiyasy.setAlignment(Pos.CENTER);
+        Label cat_id = label_class.label("Kategoriýa id",0.08,0.04);
 
-        Label wezipe = new Label("name");
-        wezipe.getStyleClass().add("label_worker");
-        wezipe.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-        wezipe.setAlignment(Pos.CENTER);
+        Label name = label_class.label("Ady",0.1,0.04);
 
-        Label doglanguni = new Label("bahasy");
-        doglanguni.getStyleClass().add("label_worker");
-        doglanguni.setPrefSize(SizeConfig.Width(0.1),SizeConfig.Height(0.04));
-        doglanguni.setAlignment(Pos.CENTER);
-
-        Label login = new Label("info");
-        login.getStyleClass().add("label_worker");
-        login.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-        login.setAlignment(Pos.CENTER);
+        Label bahasy = label_class.label("Bahasy",0.1,0.04);
+        Label info = label_class.label("Umumy maglumat",0.2,0.04);
 
 
-        main_hbox.getChildren().addAll(number,ady,familiyasy,wezipe,doglanguni,login);
+        main_hbox.getChildren().addAll(number,id,cat_id,name,bahasy,info);
         main_hbox.setPrefWidth(SizeConfig.Width(0.6));
 
         VBox all_vbox = new VBox();
@@ -132,57 +97,39 @@ public class Onumler_sc extends StackPane {
                     String buyruk = "SELECT * FROM onumler WHERE name LIKE '%"+newValue+"%'";
                     Statement st=connector.getConnection().createStatement();
                     ResultSet rs=st.executeQuery(buyruk);
+                    int teb = 0;
                     while (rs.next()){
                         onumler.clear();
-                        onumler.addAll(new Onumler(rs.getInt("tb"),rs.getInt("id"),rs.getInt("category_id"),rs.getString("name"),
+                        onumler.addAll(new Onumler(rs.getInt("id"),rs.getInt("category_id"),rs.getString("name"),
                                 rs.getDouble("bahasy"),rs.getString("info")));
 
                     }
                     if(!textField.getText().isEmpty()){
                         for (Onumler out : onumler){
+                            teb+=1;
+                            int finalTeb = teb;
                             Platform.runLater(()->{
-                                int tb = out.getTb();
                                 int id = out.getId();
                                 int cd = out.getCategory_id();
                                 double baha = out.getBahasy();
 
                                 HBox jemi = new HBox();
-                                Label label1 = new Label(String.valueOf(tb));
-                                label1.setPrefSize(SizeConfig.Width(0.04),SizeConfig.Height(0.04));
-                                label1.setAlignment(Pos.CENTER);
-                                label1.getStyleClass().add("label_for_list");
+                                Label tb = label_class.label(String.valueOf(finalTeb),0.08,0.04);
 
 
-                                Label label2 = new Label(String.valueOf(id));
-                                label2.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                                label2.setAlignment(Pos.CENTER);
-                                label2.getStyleClass().add("label_for_list");
+                                Label id1 = label_class.label(String.valueOf(id),0.08,0.04);
 
-                                Label label3 = new Label(String.valueOf(cd));
-                                label3.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                                label3.setAlignment(Pos.CENTER);
-                                label3.getStyleClass().add("label_for_list");
+                                Label cat_id = label_class.label(String.valueOf(cd),0.08,0.04);
+
+                                Label name = label_class.label(out.getName(),0.1,0.04);
+
+                                Label bahasy = label_class.label(String.valueOf(baha),0.1,0.04);
 
 
-
-                                Label label4 = new Label(out.getName());
-                                label4.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                                label4.setAlignment(Pos.CENTER);
-                                label4.getStyleClass().add("label_for_list");
+                                Label info = label_class.label(out.getInfo(),0.2,0.04);
 
 
-                                Label label5 = new Label(String.valueOf(baha));
-                                label5.setPrefSize(SizeConfig.Width(0.1),SizeConfig.Height(0.04));
-                                label5.setAlignment(Pos.CENTER);
-                                label5.getStyleClass().add("label_for_list");
-
-                                Label label6 = new Label(String.valueOf(out.getInfo()));
-                                label6.setPrefSize(SizeConfig.Width(0.08),SizeConfig.Height(0.04));
-                                label6.setAlignment(Pos.CENTER);
-                                label6.getStyleClass().add("label_for_list");
-
-
-                                jemi.getChildren().addAll(label1,label2,label3,label4,label5,label6);
+                                jemi.getChildren().addAll(tb,id1,cat_id,name,bahasy,info);
                                 onumler.clear();
                                 vBox.getChildren().clear();
                                 vBox.getChildren().addAll(new VBox(jemi) );
@@ -215,6 +162,5 @@ public class Onumler_sc extends StackPane {
 
         this.getChildren().addAll(vBox);
         this.setPrefSize(SizeConfig.Width(0.8),SizeConfig.Height(0.8));
-        this.setPrefSize(SizeConfig.Width(0.8),SizeConfig.Height(0.04));
     }
 }

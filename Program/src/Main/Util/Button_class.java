@@ -10,4 +10,12 @@ public class Button_class {
         button.getStyleClass().add("uly_button");
         return button;
     }
+    public Button Sized_btns(String text_btn, double width, double height){
+        Button button = new Button(text_btn);
+        button.setMaxSize(SizeConfig.Width(width),SizeConfig.Height(height));
+        button.setMinSize(SizeConfig.Width(width),SizeConfig.Height(height));
+        button.getStyleClass().add("Regbtn");
+        return button;
+
+    }
 }

@@ -2,28 +2,19 @@ package Main.Models;
 
 public class Onumler {
 
-    private int tb;
+
     private int id;
     private int category_id;
     private String name;
     private Double bahasy;
     private String info;
 
-    public Onumler(int tb, int id, int category_id, String name, Double bahasy, String info) {
-        this.tb = tb;
+    public Onumler(int id, int category_id, String name, Double bahasy, String info) {
         this.id = id;
         this.category_id = category_id;
         this.name = name;
         this.bahasy = bahasy;
         this.info = info;
-    }
-
-    public int getTb() {
-        return tb;
-    }
-
-    public void setTb(int tb) {
-        this.tb = tb;
     }
 
     public int getId() {
