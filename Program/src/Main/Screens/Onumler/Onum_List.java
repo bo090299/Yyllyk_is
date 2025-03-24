@@ -81,26 +81,26 @@ public class Onum_List extends StackPane{
         Button delete = button_class.Sized_btns("Öçürmek",0.06,0.04);
         delete.setOnAction((e)->{
             String buyruk2 = "DELETE FROM `onumler` WHERE id = "+idtext.getText()+";";
-            if (idtext.getText().isEmpty()||nametext.getText().isEmpty()||bahasytext.getText().isEmpty()) {
+            if (idtext.getText().isEmpty()) {
                 Alert alert= new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ýalňyşlyk!");
                 alert.setContentText("Öçürmeli önümiňiziň idisini giriziň!");
                 alert.show();
                 idtext.clear();
+            }else {
+                try {
+                    Statement stat1 = conn.getConnection().createStatement();
+                    stat1.executeUpdate(buyruk2);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                Global.main_hbox.getChildren().clear();
+                try {
+                    Global.main_hbox.getChildren().addAll(new Onum_List());
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
             }
-            try {
-                Statement stat1 = conn.getConnection().createStatement();
-                stat1.executeUpdate(buyruk2);
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-            Global.main_hbox.getChildren().clear();
-            try {
-                Global.main_hbox.getChildren().addAll(new Onum_List());
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-
         });
 
 

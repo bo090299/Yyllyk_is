@@ -1,5 +1,6 @@
 package Main.Screens.Category;
 
+import Main.Models.Kategoriya;
 import Main.Models.Onumler;
 import Main.Util.Connector;
 import Main.Util.Label_class;
@@ -90,31 +91,28 @@ public class Category_list extends VBox{
         textField.setPrefSize(SizeConfig.Width(0.2),SizeConfig.Height(0.04));
         textField.getStyleClass().add("Gozleg");
         VBox vBox =new VBox();
-        ObservableList<Onumler> onumler = FXCollections.observableArrayList();
+        ObservableList<Kategoriya> kategoriya = FXCollections.observableArrayList();
 
         textField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 try {
 
-                    String buyruk = "SELECT * FROM onumler WHERE name LIKE '%"+newValue+"%'";
+                    String buyruk = "SELECT * FROM kategoriya WHERE name LIKE '%"+newValue+"%'";
                     Statement st=connector.getConnection().createStatement();
                     ResultSet rs=st.executeQuery(buyruk);
                     int teb = 0;
                     while (rs.next()){
-                        onumler.clear();
-                        onumler.addAll(new Onumler(rs.getInt("id"),rs.getInt("category_id"),rs.getString("name"),
-                                rs.getDouble("bahasy"),rs.getString("info")));
+                        kategoriya.clear();
+                        kategoriya.addAll(new Kategoriya(rs.getInt("id"),rs.getString("name")));
 
                     }
                     if(!textField.getText().isEmpty()){
-                        for (Onumler out : onumler){
+                        for (Kategoriya out : kategoriya){
                             teb+=1;
                             int finalTeb = teb;
                             Platform.runLater(()->{
                                 int id = out.getId();
-                                int cd = out.getCategory_id();
-                                double baha = out.getBahasy();
 
                                 HBox jemi = new HBox();
                                 Label tb = label_class.label(String.valueOf(finalTeb),0.08,0.04);
@@ -124,7 +122,7 @@ public class Category_list extends VBox{
                                 Label name = label_class.label(out.getName(),0.1,0.04);
 
                                 jemi.getChildren().addAll(tb,id1,name);
-                                onumler.clear();
+                                kategoriya.clear();
                                 vBox.getChildren().clear();
                                 vBox.getChildren().addAll(new VBox(jemi) );
                                 vBox.getChildren().add(0,all_vbox);
@@ -134,7 +132,7 @@ public class Category_list extends VBox{
                         }
                     }
                     else {
-                        onumler.clear();
+                        kategoriya.clear();
                         vBox.getChildren().clear();
                         vBox.getChildren().add(scroll);
                         vBox.getChildren().add(0,all_vbox);
@@ -152,7 +150,7 @@ public class Category_list extends VBox{
 
         all_vbox.getChildren().addAll(for_text,main_hbox);
         vBox.getChildren().addAll(all_vbox);
-        vBox.getChildren().add(1,onumler.size() == 0 ? scroll : null);
+        vBox.getChildren().add(1,kategoriya.size() == 0 ? scroll : null);
 
         this.getChildren().addAll(vBox);
         this.setPrefSize(SizeConfig.Width(0.8),SizeConfig.Height(0.8));

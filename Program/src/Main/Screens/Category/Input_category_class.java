@@ -1,9 +1,7 @@
 package Main.Screens.Category;
 
-import Main.Util.Box_class;
-import Main.Util.Connector;
-import Main.Util.Global;
-import Main.Util.SizeConfig;
+import Main.Util.*;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,15 +16,14 @@ import java.sql.SQLException;
 public class Input_category_class extends VBox {
     public Input_category_class() {
         Box_class box_class = new Box_class();
+        Button_class btn = new Button_class();
         Connector connector = new Connector();
 
         TextField name = new TextField();
         VBox name_box = box_class.Vbox_method("Ady",name, "Ady");
 
 
-        Button girizmek = new Button("Girizmek");
-        girizmek.setPrefSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        girizmek.getStyleClass().add("regbtn");
+        Button girizmek = btn.Sized_btns("girizmek",0.2,0.03);
         girizmek.setOnAction((e->{
             if (name.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -47,10 +44,7 @@ public class Input_category_class extends VBox {
             }
         }));
 
-        Button yza = new Button("Çykmak");
-        yza.setMaxSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        yza.setMinSize(SizeConfig.Width(0.2),SizeConfig.Height(0.03));
-        yza.getStyleClass().add("regbtn");
+        Button yza = btn.Sized_btns("Çykmak",0.2,0.03);
         yza.setOnAction((e->{
             Global.main_hbox.getChildren().clear();
             Global.main_hbox.getChildren().addAll(new Category_main());
@@ -62,6 +56,7 @@ public class Input_category_class extends VBox {
 
 
         this.getChildren().addAll(kat_box);
+        this.setMargin(kat_box,new Insets(0,0,0,750));
         this.setAlignment(Pos.CENTER);
         this.setVgrow(name_box, Priority.ALWAYS);
         this.getStylesheets().addAll("/Resource/Style/Style.css");
