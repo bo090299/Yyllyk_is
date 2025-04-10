@@ -6,18 +6,18 @@ public class Onumcilik {
     private int id;
     private int onum_id;
     private String ady;
-    private String kategoriya;
+    private int kategoriya_id;
     private Double bahasy;
     private Date ondurilensenesi;
     private Date mohleti;
     private int umumymukdary;
     private Double nace_girdejilik_onum;
 
-    public Onumcilik(int id, int onum_id, String ady, String kategoriya, Double bahasy, Date ondurilensenesi, Date mohleti, int umumymukdary, Double nace_girdejilik_onum) {
+    public Onumcilik(int id, int onum_id, String ady, int kategoriya_id, Double bahasy, Date ondurilensenesi, Date mohleti, int umumymukdary, Double nace_girdejilik_onum) {
         this.id = id;
         this.onum_id = onum_id;
         this.ady = ady;
-        this.kategoriya = kategoriya;
+        this.kategoriya_id = kategoriya_id;
         this.bahasy = bahasy;
         this.ondurilensenesi = ondurilensenesi;
         this.mohleti = mohleti;
@@ -49,12 +49,12 @@ public class Onumcilik {
         this.ady = ady;
     }
 
-    public String getKategoriya() {
-        return kategoriya;
+    public int getKategoriya_id() {
+        return kategoriya_id;
     }
 
-    public void setKategoriya(String kategoriya) {
-        this.kategoriya = kategoriya;
+    public void setKategoriya_id(int kategoriya_id) {
+        this.kategoriya_id = kategoriya_id;
     }
 
     public Double getBahasy() {
