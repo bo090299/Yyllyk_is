@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd36ff54-2860-451e-8a8d-9ebe47869575" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Program/src/Main/Screens/Onumcilik/Input_onumcilik_class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Program/src/Main/Screens/Onumcilik/Main_onumcilik_class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Program/src/Main/Screens/Onumcilik/Onumcilik_list_class.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program/src/Main/Models/Onumcilik.java" beforeDir="false" afterPath="$PROJECT_DIR$/Program/src/Main/Models/Onumcilik.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,6 +21,7 @@
     <session id="-459755587">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.opened" value="2" />
@@ -294,7 +291,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1744260578905" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1744261018422" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Program/src/Main/Mysql_connector/mysql-connector-java-5.1.45-bin.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
