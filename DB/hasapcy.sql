@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 17 2025 г., 11:57
+-- Время создания: Апр 11 2025 г., 07:16
 -- Версия сервера: 10.4.24-MariaDB
 -- Версия PHP: 7.4.29
 
@@ -86,6 +86,13 @@ CREATE TABLE `kategoriya` (
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Дамп данных таблицы `kategoriya`
+--
+
+INSERT INTO `kategoriya` (`id`, `name`) VALUES
+(1, 'Suyt onumi');
+
 -- --------------------------------------------------------
 
 --
@@ -96,7 +103,7 @@ CREATE TABLE `onumcilik` (
   `id` int(11) NOT NULL,
   `onum_id` int(11) NOT NULL,
   `ady` varchar(255) NOT NULL,
-  `kategoriya` varchar(255) NOT NULL,
+  `kategoriya_id` int(255) NOT NULL,
   `bahasy` double NOT NULL,
   `ondurilensenesi` date NOT NULL,
   `mohleti` varchar(255) NOT NULL,
@@ -117,6 +124,13 @@ CREATE TABLE `onumler` (
   `bahasy` double NOT NULL,
   `info` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `onumler`
+--
+
+INSERT INTO `onumler` (`id`, `category_id`, `name`, `bahasy`, `info`) VALUES
+(4, 1, 'Cekide', 15, 'Suyt onumi');
 
 -- --------------------------------------------------------
 
@@ -257,7 +271,7 @@ ALTER TABLE `isgarler`
 -- AUTO_INCREMENT для таблицы `kategoriya`
 --
 ALTER TABLE `kategoriya`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `onumcilik`
@@ -269,7 +283,7 @@ ALTER TABLE `onumcilik`
 -- AUTO_INCREMENT для таблицы `onumler`
 --
 ALTER TABLE `onumler`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `tutumlar`
